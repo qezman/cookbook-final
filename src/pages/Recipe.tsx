@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFavorites } from "../components/context/FavoritesContext";
+import { SkeletonCard } from "../Skeleton";
 
 interface MealDetail {
   idMeal: string;
@@ -34,7 +35,12 @@ export default function Recipe() {
     return ingredients;
   };
 
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (loading)
+    return (
+      <p className="text-center text-gray-500">
+        <SkeletonCard />
+      </p>
+    );
   if (!meal) return <p className="text-center text-red-500">Meal not found.</p>;
 
   const handleToggleFavorite = () => {

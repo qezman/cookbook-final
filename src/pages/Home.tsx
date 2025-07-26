@@ -9,7 +9,7 @@ interface Meal {
 }
 
 const Home = () => {
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("");
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -52,6 +52,7 @@ const Home = () => {
         </button>
       </form>
 
+      {/* Skeleton load */}
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
