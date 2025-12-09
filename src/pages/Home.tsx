@@ -34,19 +34,19 @@ const Home = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-6xl px-2 sm:px-6">
       <form onSubmit={handleSearch} className="mb-6 flex gap-4">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for a meal..."
-          className="border border-gray-300 px-4 py-2 rounded w-full"
+          className="w-full rounded-xl border border-gray-300 bg-white/90 px-4 py-2 shadow-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
         />
 
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+          className="rounded-xl bg-indigo-600 px-5 py-2 text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
         >
           Search
         </button>
@@ -73,7 +73,7 @@ const Home = () => {
           {meals.map((meal) => (
             <Link
               key={meal.idMeal}
-              className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+              className="group rounded-xl overflow-hidden border bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               to={`/recipe/${meal.idMeal}`}
             >
               <img
@@ -83,7 +83,7 @@ const Home = () => {
               />
               <div className="p-4">
                 <h3 className="font-semibold text-lg">{meal.strMeal}</h3>
-                <p className="text-sm to-gray-500">{meal.strCategory}</p>
+                <p className="text-sm text-gray-500">{meal.strCategory}</p>
               </div>
             </Link>
           ))}

@@ -17,18 +17,18 @@ export default function Favorites() {
 
   if (favorites.length === 0) {
     return (
-      <p className="text-center text-gray-500 mt-10 italic">
-        No favorites added yet.
-      </p>
+      <div className="mx-auto max-w-3xl mt-12 text-center">
+        <p className="text-gray-500 italic">No favorites added yet.</p>
+      </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
+    <div className="mx-auto max-w-6xl px-2 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       {favorites.map((meal) => (
         <div
           key={meal.idMeal}
-          className="border rounded-lg overflow-hidden shadow relative"
+          className="relative overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
         >
           <img
             src={meal.strMealThumb}
@@ -40,14 +40,14 @@ export default function Favorites() {
             <h2 className="mb-2 text-lg font-semibold">{meal.strMeal}</h2>
             <Link
               to={`/recipe/${meal.idMeal}`}
-              className="text-indigo-600 underline text-sm"
+              className="text-indigo-600 underline text-sm hover:text-indigo-700"
             >
               View Details
             </Link>
           </div>
 
           <button
-            className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white px-2 py-1 text-xs rounded"
+            className="absolute top-2 right-2 rounded bg-red-500 px-2 py-1 text-xs text-white shadow-sm transition hover:bg-red-600"
             onClick={() => {
               removeFavorite(meal.idMeal);
               toast.success(`${meal.strMeal} removed from favorites`);
